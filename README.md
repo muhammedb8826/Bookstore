@@ -201,7 +201,7 @@ To run tests, run the following command:
 
 > Some features are coming soon.
 
-- [ ] **Interactive Calculator**
+- [ ] **Interactive Bookstore**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
