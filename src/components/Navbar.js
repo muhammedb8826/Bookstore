@@ -11,7 +11,7 @@ export default function Navbar() {
           <NavLink to="/">BOOKS</NavLink>
         </li>
         <li>
-          <NavLink to="/calculator">CATEGORIES</NavLink>
+          <NavLink to="/categories">CATEGORIES</NavLink>
         </li>
       </ul>
     </nav>
