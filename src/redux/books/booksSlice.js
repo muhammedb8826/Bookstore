@@ -12,13 +12,14 @@ const booksSlice = createSlice({
   reducers: {
     addBook: (state, { payload }) => {
       state.books.push({
-        id: payload.id,
+        id: payload.item_id,
         title: payload.title,
         author: payload.author,
+        category: payload.category,
       });
     },
     removeBook: (state, { payload }) => {
-      state.books.filter((book) => book.id !== payload.id);
+      state.books.filter((book) => book.id !== payload.item_id);
     },
   },
 });
