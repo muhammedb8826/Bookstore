@@ -3,7 +3,7 @@ import AddBook from './AddBook';
 import { removeBook } from '../redux/books/booksSlice';
 
 export default function Books() {
-  const { books } = useSelector((store) => store.book);
+  const { books } = useSelector((state) => state.book);
   const dispatch = useDispatch();
 
   return (
