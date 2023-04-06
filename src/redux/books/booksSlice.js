@@ -19,7 +19,7 @@ const booksSlice = createSlice({
       });
     },
     removeBook: (state, { payload }) => {
-      state.books.filter((book) => book.id !== payload.item_id);
+      state.books = state.books.filter((book) => book.item_id !== payload);
     },
   },
 });
