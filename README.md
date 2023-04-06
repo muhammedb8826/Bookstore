@@ -1,5 +1,62 @@
 <a name="readme-top"></a>
 
+<div align="center">
+
+  <h3><b>Muhammed B | Bookstore project</b></h3>
+
+</div>
+
+<!-- TABLE OF CONTENTS -->
+
+# 📗 Table of Contents
+
+- [📖 About the Project](#about-project)
+  - [🛠 Built With](#built-with)
+    - [Tech Stack](#tech-stack)
+    - [Key Features](#key-features)
+  - [🚀 Live Demo](#live-demo)
+- [💻 Getting Started](#getting-started)
+  - [Setup](#setup)
+  - [Prerequisites](#prerequisites)
+  - [Install](#install)
+  - [Usage](#usage)
+  - [Run tests](#run-tests)
+  - [Deployment](#triangular_flag_on_post-deployment)
+- [👥 Authors](#authors)
+- [🔭 Future Features](#future-features)
+- [🤝 Contributing](#contributing)
+- [⭐️ Show your support](#support)
+- [🙏 Acknowledgements](#acknowledgements)
+- [❓ FAQ (OPTIONAL)](#faq)
+- [📝 License](#license)
+
+<!-- PROJECT DESCRIPTION -->
+
+# 📖 Bookstore <a name="about-project"></a>
+
+- In this project I am going to build a Bookstore App.
+
+**Bookstore App** is a static page that has been
+
+## 🛠 Built With <a name="built-with"></a>
+
+- React
+- Git, Github
+- VSCode
+
+### Tech Stack <a name="tech-stack"></a>
+
+> CSS,
+> React,
+> Git,
+> Github
+
+<details>
+  <summary>React</summary>
+  <ul>
+    <li><a href="https://react.dev/learn/tutorial-tic-tac-toe">HTML COURSE</a></li>
+=======
+
 <!--
 HOW TO USE:
 This is an example of how you may give instructions on setting up your project locally.
@@ -94,6 +151,18 @@ After you're finished please remove all the comments and instructions!
 </details>
 
 <details>
+
+  <summary>CSS</summary>
+  <ul>
+    <li><a href="https://www.w3schools.com/css/">CSS Course</a></li>
+<summary>Git</summary>
+  <ul>
+    <li><a href="https://git-scm.com/">Learn about git</a></li>
+
+  </ul>
+</details>
+
+<details>
 <summary>Git</summary>
   <ul>
     <li><a href="https://git-scm.com/">Learn about git</a></li>
@@ -101,6 +170,36 @@ After you're finished please remove all the comments and instructions!
 </details>
 
 <details>
+<summary>Github</summary>
+  <ul>
+    <li><a href="https://github.com/">Learn about git</a></li>
+  </ul>
+</details>
+
+<!-- Features -->
+
+### Key Features <a name="key-features"></a>
+
+> Features I used in this project mainly:
+
+- **React**
+- **CSS**
+- **JSX**
+- **Linters,Stylelint**
+- **esLint**
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- LIVE DEMO -->
+
+## 🚀 Live Demo <a name="live-demo"></a>
+
+> coming soon!
+ 
+ Link to github repository. [Bookstore](https://github.com/muhammedb8826/Bookstore)
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 <summary>Github</summary>
   <ul>
     <li><a href="https://github.com/">Learn about git</a></li>
