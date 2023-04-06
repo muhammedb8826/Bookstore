@@ -12,7 +12,7 @@ const booksSlice = createSlice({
     addBook: (state, { payload }) => {
       state.books.push({
         id: payload.id,
-        name: payload.name,
+        title: payload.title,
         author: payload.author,
       });
     },
