@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
 
 export default function Books() {
   const [book, setBook] = useState({
@@ -18,16 +19,25 @@ export default function Books() {
     book.bookAuthor = '';
   };
 
+  const { books } = useSelector((store) => store.book);
+
   return (
     <div>
       <div className="book-list">
-        <h1>{book.bookTitle}</h1>
-        <p>{book.bookAuthor}</p>
-        <div className="buttons">
-          <button type="button">Comments</button>
-          <button type="button">Remove</button>
-          <button type="button">Edit</button>
-        </div>
+        <ul>
+          {books.map((book) => (
+            <li key={book.item_id}>
+              <span>{book.category}</span>
+              <h3>{book.title}</h3>
+              <p>{book.author}</p>
+              <div className="buttons">
+                <button type="button">Comments</button>
+                <button type="button">Remove</button>
+                <button type="button">Edit</button>
+              </div>
+            </li>
+          ))}
+        </ul>
       </div>
       <hr />
       <div className="form">
