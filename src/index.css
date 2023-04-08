@@ -102,6 +102,28 @@ form button {
   border-radius: 5px;
 }
 
+ul li p,
+ul li button {
+  color: var(--blue);
+}
+
+ul li button {
+  cursor: pointer;
+  background-color: transparent;
+  margin-top: 1.5rem;
+  border: none;
+  outline: none;
+  border-right: 1px solid var(--gray);
+  padding-inline-end: 1rem;
+}
+
+.chapter button {
+  background-color: var(--blue);
+  padding: 0.7rem 1rem;
+  color: var(--darklight);
+  border-radius: 5px;
+}
+
 .under-construction {
   padding: 2rem;
   font-size: 2rem;
@@ -120,6 +142,9 @@ form button {
 }
 
 .book-list ul li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   background-color: var(--white);
   padding: 1rem;
   border: 1px solid var(--gray);
@@ -132,21 +157,91 @@ ul li span {
   color: var(--gray);
 }
 
-ul li p,
-ul li button {
-  color: var(--blue);
-}
-
-ul li button {
-  cursor: pointer;
-  background-color: transparent;
-  margin-top: 1.5rem;
-  border: none;
-  outline: none;
-  border-right: 1px solid var(--gray);
-  padding-inline-end: 1rem;
-}
-
 ul li button:nth-child(n + 2) {
   padding-inline-start: 1rem;
+}
+
+.progress-and-chapter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 50%;
+}
+
+.chapter span {
+  font-weight: 400;
+}
+
+.chapter p {
+  color: black;
+}
+
+.progress {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 40%;
+  border-right: 1px solid var(--gray);
+}
+
+.progress p {
+  position: absolute;
+  left: 20%;
+  color: black;
+  font-size: 1.5rem;
+}
+
+.progress p::after {
+  content: 'Completed';
+  position: absolute;
+  top: 2.5rem;
+  color: var(--gray);
+  left: 90%;
+  font-size: 1rem;
+  transform: translate(-50%, -50%);
+}
+
+.radialProgressBar {
+  position: absolute;
+  border-radius: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(75%, -40%);
+  width: 70px;
+  height: 70px;
+  display: -webkit-box;
+  display: flex;
+  background: #ddd;
+  rotate: -120deg;
+}
+
+.radialProgressBar .overlay {
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  margin: auto;
+  background: #fff;
+}
+
+.progress-60 {
+  background-image: -webkit-linear-gradient(left, #028cd5 50%, transparent 50%), -webkit-linear-gradient(36deg, #028cd5 50%, #ddd 50%);
+  background-image: linear-gradient(90deg, #028cd5 50%, transparent 50%), linear-gradient(54deg, #028cd5 50%, #ddd 50%);
+}
+
+.rt-container {
+  padding-right: 10px;
+  padding-left: 10px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+@media (min-width: 768px) {
+  .rt-container {
+    width: 768px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .rt-container {
+    width: 1000px;
+  }
 }
