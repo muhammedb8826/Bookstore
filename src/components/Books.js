@@ -1,16 +1,34 @@
 import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
 import AddBook from './AddBook';
-import { removeBook } from '../redux/books/booksSlice';
+import { getBooks, deleteBook } from '../redux/books/booksSlice';
 
 export default function Books() {
-  const { books } = useSelector((state) => state.book);
+  const { books, isLoading, error } = useSelector((state) => state.book);
   const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getBooks());
+  }, []);
+
+  if (isLoading) {
+    return (
+      <div>
+        <h1>Loading...</h1>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div>Something went wrong!</div>
+    );
+  }
 
   return (
     <div>
       <div className="book-list">
         <ul>
-          {books ? books.map((book) => (
+          {books.length >= 1 ? books.map((book) => (
             <li key={book.item_id}>
               <span>{book.category}</span>
               <h3>{book.title}</h3>
@@ -20,7 +38,7 @@ export default function Books() {
                 <button
                   type="button"
                   onClick={() => {
-                    dispatch(removeBook(book.item_id));
+                    dispatch(deleteBook(book.item_id));
                   }}
                 >
                   Remove

@@ -1,39 +1,57 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import axios from 'axios';
+
+const baseUrl = 'https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps';
+const requestedId = 'E7fGkzzEJ-1Bt95wt7R4s';
+const url = `${baseUrl}/${requestedId}/books`;
 
 const initialState = {
-  books: [
-    {
-      item_id: 'item1',
-      title: 'The Great Gatsby',
-      author: 'John Smith',
-      category: 'Fiction',
-    },
-    {
-      item_id: 'item2',
-      title: 'Anna Karenina',
-      author: 'Leo Tolstoy',
-      category: 'Fiction',
-    },
-    {
-      item_id: 'item3',
-      title: 'The Selfish Gene',
-      author: 'Richard Dawkins',
-      category: 'Nonfiction',
-    },
-  ],
+  books: [],
   isLoading: true,
+  error: null,
 };
+
+export const getBooks = createAsyncThunk('book/getBooks', async (data, { rejectWithValue }) => {
+  try {
+    const resp = await axios(url);
+    return resp.data;
+  } catch (error) {
+    return rejectWithValue(error.message);
+  }
+});
+
+export const postBook = createAsyncThunk(
+  'post/postBook',
+  async (book) => {
+    const response = await axios.post(url, book);
+    return response.data;
+  },
+);
+
+export const deleteBook = createAsyncThunk(
+  'delete/deleteBook',
+  async (id) => {
+    const bookItem = `${url}/${id}`;
+    const response = await axios.delete(bookItem);
+    return response.data;
+  },
+);
 
 const booksSlice = createSlice({
   name: 'book',
   initialState,
-  reducers: {
-    addBook: (state, { payload }) => {
-      state.books = [...state.books, payload];
-    },
-    removeBook: (state, { payload }) => {
-      state.books = state.books.filter((book) => book.item_id !== payload);
-    },
+  extraReducers: (builder) => {
+    builder
+      .addCase(getBooks.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(getBooks.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.books = action.payload;
+      })
+      .addCase(getBooks.rejected, (state) => {
+        state.isLoading = false;
+      });
   },
 });
 
