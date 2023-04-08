@@ -41,7 +41,7 @@ export default function Books() {
           {Object.keys(books).length > 0 ? Object.keys(books).map((book) => (
             <li key={book}>
               <span>{books[book][0].category}</span>
-              <h3>{books[book][0].title}</h3>
+              <h2>{books[book][0].title}</h2>
               <p>{books[book][0].author}</p>
               <div className="buttons">
                 <button type="button">Comments</button>
@@ -56,17 +56,6 @@ export default function Books() {
             </li>
           )) : <p className="no-book">No books were added</p>}
         </ul>
-        <div className="progress-and-chapter">
-          <div className="progress">
-            <span className="loading" />
-            <p className="percent">64%</p>
-          </div>
-          <div className="chapter">
-            <span>CURRENT CHAPTER</span>
-            <p>Chapter17</p>
-            <button type="button">UPDATE PROGRESS</button>
-          </div>
-        </div>
       </div>
       <hr />
       <AddBook />

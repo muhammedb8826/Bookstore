@@ -103,6 +103,7 @@ form button {
 }
 
 .under-construction {
+  padding: 2rem;
   font-size: 2rem;
   text-align: center;
   font-weight: 500;
@@ -114,8 +115,38 @@ form button {
   text-align: center;
 }
 
-.book-list {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.book-list ul {
+  list-style: none;
+}
+
+.book-list ul li {
+  background-color: var(--white);
+  padding: 1rem;
+  border: 1px solid var(--gray);
+  margin-bottom: 1rem;
+  border-radius: 5px;
+}
+
+ul li span {
+  font-weight: bold;
+  color: var(--gray);
+}
+
+ul li p,
+ul li button {
+  color: var(--blue);
+}
+
+ul li button {
+  cursor: pointer;
+  background-color: transparent;
+  margin-top: 1.5rem;
+  border: none;
+  outline: none;
+  border-right: 1px solid var(--gray);
+  padding-inline-end: 1rem;
+}
+
+ul li button:nth-child(n + 2) {
+  padding-inline-start: 1rem;
 }
