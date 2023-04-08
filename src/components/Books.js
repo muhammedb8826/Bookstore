@@ -27,7 +27,7 @@ export default function Books() {
 
   const handleClick = async (id) => {
     try {
-      await dispatch(deleteBook(id));
+      dispatch(deleteBook(id));
       dispatch(deleteBookLocal(id));
     } catch {
       dispatch(setError(true));
