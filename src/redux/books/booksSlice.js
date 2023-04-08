@@ -40,6 +40,28 @@ export const deleteBook = createAsyncThunk('delete/deleteBook', async (itemId, {
 const booksSlice = createSlice({
   name: 'book',
   initialState,
+  reducers: {
+    setError(state, action) {
+      return {
+        ...state,
+        error: action.payload,
+      };
+    },
+    addBookLocal(state, action) {
+      const newState = JSON.parse(JSON.stringify(state));
+      newState.books[action.payload.item_id] = [{
+        title: action.payload.title,
+        author: action.payload.author,
+        category: action.payload.category,
+      }];
+      return newState;
+    },
+    deleteBookLocal(state, action) {
+      const newState = JSON.parse(JSON.stringify(state));
+      delete newState.books[`${action.payload}`];
+      return newState;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(getBooks.pending, (state) => {
@@ -61,3 +83,6 @@ const booksSlice = createSlice({
 });
 
 export default booksSlice.reducer;
+export const {
+  setError, addBookLocal, deleteBookLocal,
+} = booksSlice.actions;
