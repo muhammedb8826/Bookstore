@@ -1,9 +1,9 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-const baseUrl = 'https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps';
-const requestedId = 'E7fGkzzEJ-1Bt95wt7R4s';
-const url = `${baseUrl}/${requestedId}/books`;
+// const baseUrl = 'https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi';
+const requestedId = '26VQCgZeIQMuYz9e44m4';
+const url = `https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/${requestedId}/books`;
 
 const initialState = {
   books: [],
@@ -11,9 +11,9 @@ const initialState = {
   error: null,
 };
 
-export const getBooks = createAsyncThunk('book/getBooks', async (data, { rejectWithValue }) => {
+export const getBooks = createAsyncThunk('booklist/getBooklist', async ({ rejectWithValue }) => {
   try {
-    const resp = await axios(url);
+    const resp = await axios.get(url);
     return resp.data;
   } catch (error) {
     return rejectWithValue(error.message);
@@ -22,20 +22,20 @@ export const getBooks = createAsyncThunk('book/getBooks', async (data, { rejectW
 
 export const postBook = createAsyncThunk(
   'post/postBook',
-  async (book) => {
-    const response = await axios.post(url, book);
+  async (data) => {
+    const response = await axios.post(url, data);
     return response.data;
   },
 );
 
-export const deleteBook = createAsyncThunk(
-  'delete/deleteBook',
-  async (id) => {
-    const bookItem = `${url}/${id}`;
-    const response = await axios.delete(bookItem);
-    return response.data;
-  },
-);
+export const deleteBook = createAsyncThunk('bookList/removeBook', async (itemId, { rejectWithValue }) => {
+  try {
+    const resp = await axios.delete(itemId);
+    return resp.data;
+  } catch (error) {
+    return rejectWithValue(error.message);
+  }
+});
 
 const booksSlice = createSlice({
   name: 'book',
@@ -49,11 +49,11 @@ const booksSlice = createSlice({
         state.isLoading = false;
         state.books = action.payload;
       })
-      .addCase(getBooks.rejected, (state) => {
+      .addCase(getBooks.rejected, (state, action) => {
         state.isLoading = false;
+        state.error = action.payload;
       });
   },
 });
 
-export const { addBook, removeBook } = booksSlice.actions;
 export default booksSlice.reducer;
