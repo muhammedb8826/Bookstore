@@ -2,8 +2,8 @@ import Books from './Books';
 
 export default function Home() {
   return (
-    <div>
+    <main>
       <Books />
-    </div>
+    </main>
   );
 }
