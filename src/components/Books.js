@@ -1,34 +1,60 @@
 import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
 import AddBook from './AddBook';
-import { removeBook } from '../redux/books/booksSlice';
+import {
+  getBooks, deleteBook, deleteBookLocal, setError,
+} from '../redux/books/booksSlice';
 
 export default function Books() {
-  const { books } = useSelector((state) => state.book);
+  const { books, isLoading, error } = useSelector((state) => state.book);
   const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getBooks());
+  }, [dispatch]);
+  if (isLoading) {
+    return (
+      <div>
+        <h1>Loading...</h1>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div>Something went wrong!</div>
+    );
+  }
+
+  const handleClick = async (id) => {
+    try {
+      dispatch(deleteBook(id));
+      dispatch(deleteBookLocal(id));
+    } catch {
+      dispatch(setError(true));
+    }
+  };
 
   return (
     <div>
       <div className="book-list">
         <ul>
-          {books ? books.map((book) => (
-            <li key={book.item_id}>
-              <span>{book.category}</span>
-              <h3>{book.title}</h3>
-              <p>{book.author}</p>
+          {Object.keys(books).map((book) => (
+            <li key={book}>
+              <span>{books[book][0].category}</span>
+              <h3>{books[book][0].title}</h3>
+              <p>{books[book][0].author}</p>
               <div className="buttons">
                 <button type="button">Comments</button>
                 <button
                   type="button"
-                  onClick={() => {
-                    dispatch(removeBook(book.item_id));
-                  }}
+                  onClick={() => { handleClick(book); }}
                 >
                   Remove
                 </button>
                 <button type="button">Edit</button>
               </div>
             </li>
-          )) : <p>No Books were added!</p>}
+          ))}
         </ul>
       </div>
       <hr />

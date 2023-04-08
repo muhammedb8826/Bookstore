@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
-import { addBook } from '../redux/books/booksSlice';
+import { postBook, addBookLocal, setError } from '../redux/books/booksSlice';
 
 const AddBook = () => {
   const [book, setBook] = useState({
@@ -16,12 +16,21 @@ const AddBook = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    dispatch(addBook({ item_id: uuidv4(), title: book.title, author: book.author }));
-    setBook({
-      title: '', author: '',
-    });
+    try {
+      dispatch(postBook({
+        item_id: uuidv4(), title: book.title, author: book.author, category: 'Action',
+      }));
+      dispatch(addBookLocal({
+        item_id: uuidv4(), title: book.title, author: book.author, category: 'Action',
+      }));
+      setBook({
+        title: '', author: '',
+      });
+    } catch (error) {
+      dispatch(setError(true));
+    }
   };
   return (
     <div className="form">
