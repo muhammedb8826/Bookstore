@@ -1,5 +1,21 @@
+*,
+::after,
+::before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --blue: #0290ff;
+  --gray: #888;
+  --darklight: #fafafa;
+  --white: #fff;
+}
+
 body {
   margin: 0;
+  background-color: var(--darklight);
   font-family:
     -apple-system,
     BlinkMacSystemFont,
@@ -16,12 +32,90 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family:
-    source-code-pro,
-    Menlo,
-    Monaco,
-    Consolas,
-    'Courier New',
-    monospace;
+nav {
+  background-color: var(--white);
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+}
+
+nav .site-title {
+  color: var(--blue);
+  text-decoration: none;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+}
+
+nav ul li {
+  padding-inline-start: 2rem;
+}
+
+nav ul li a {
+  color: black;
+  text-decoration: none;
+}
+
+main {
+  padding: 2rem;
+}
+
+.no-book {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 500;
+  color: var(--blue);
+  padding: 2rem;
+}
+
+.form h2 {
+  color: var(--gray);
+}
+
+.form form {
+  padding-top: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+form input {
+  width: 35%;
+  padding: 0.7rem;
+  border-radius: 5px;
+  outline: none;
+  border: var(--gray) 1px solid;
+  font-size: 1rem;
+}
+
+form button {
+  width: 20%;
+  padding: 0.8rem;
+  color: var(--white);
+  background-color: var(--blue);
+  border: none;
+  outline: none;
+  border-radius: 5px;
+}
+
+.under-construction {
+  font-size: 2rem;
+  text-align: center;
+  font-weight: 500;
+}
+
+.error-message {
+  font-size: 2rem;
+  color: red;
+  text-align: center;
+}
+
+.book-list {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
