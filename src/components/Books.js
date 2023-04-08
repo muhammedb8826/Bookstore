@@ -9,7 +9,7 @@ export default function Books() {
   useEffect(() => {
     dispatch(getBooks());
   }, []);
-
+  console.log(Object.keys(books));
   if (isLoading) {
     return (
       <div>
@@ -28,17 +28,17 @@ export default function Books() {
     <div>
       <div className="book-list">
         <ul>
-          {books.length >= 1 ? books.map((book) => (
-            <li key={book.item_id}>
-              <span>{book.category}</span>
-              <h3>{book.title}</h3>
-              <p>{book.author}</p>
+          {Object.keys(books).map((book) => (
+            <li key={books[book]}>
+              <span>{books[book][0].category}</span>
+              <h3>{books[book][0].title}</h3>
+              <p>{books[book][0].author}</p>
               <div className="buttons">
                 <button type="button">Comments</button>
                 <button
                   type="button"
                   onClick={() => {
-                    dispatch(deleteBook(book.item_id));
+                    dispatch(deleteBook(book));
                   }}
                 >
                   Remove
@@ -46,7 +46,7 @@ export default function Books() {
                 <button type="button">Edit</button>
               </div>
             </li>
-          )) : <p>No Books were added!</p>}
+          ))}
         </ul>
       </div>
       <hr />
