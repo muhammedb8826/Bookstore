@@ -9,7 +9,6 @@ export default function Books() {
   useEffect(() => {
     dispatch(getBooks());
   }, []);
-  console.log(Object.keys(books));
   if (isLoading) {
     return (
       <div>

@@ -54,7 +54,7 @@ const booksSlice = createSlice({
         state.error = action.payload;
       })
       .addCase(deleteBook.pending, (state) => ({ ...state }))
-      .addCase(deleteBook.fulfilled, (state, { payload }) => ({
+      .addCase(deleteBook.fulfilled, (state) => ({
         ...state,
       }));
   },
